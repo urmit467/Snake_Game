@@ -1,0 +1,17 @@
+name: FinanceR
+type: theme
+description: 'Dark-themed finance planner with budget calculator and Chart.js visualizations.'
+core_version_requirement: ^8 || ^9 || ^10
+package: Custom
+base theme: classy
+
+libraries:
+  - financer/global-styling
+  - financer/chartjs
+
+regions:
+  header: Header
+  content: Content
+  sidebar_first: Sidebar First
+  sidebar_second: Sidebar Second
+  footer: Footer

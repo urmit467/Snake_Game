@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title | default('FinanceR - Smart Finance Solutions') }}</title>
+  <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+</head>
+<body>
+  <div class="first"></div>
+
+  <button id="sidebar-toggle">☰</button>
+
+  <div id="sidebar">
+    <ul class="sidebar-menu">
+      {% set sidebar_links = ['Home', 'About', 'Services', 'Portfolio', 'Contact'] %}
+      {% for link in sidebar_links %}
+        <li>
+          <a href="{{ link == 'Contact' ? '#bottom' : '#' }}">{{ link }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="banner">
+    <div class="navlogo">
+      <img src="{{ asset('favicon.png') }}" class="logo" alt="Logo">
+    </div>
+    <div class="bannertext">"FinanceR: Where smart finance gets its answer!"</div>
+    <div class="links">
+      <a href="https://www.moneycontrol.com/" target="_blank">market trends</a>
+      <a href="https://www.marketwatch.com/" target="_blank">news</a>
+      <a href="#bottom">contact us</a>
+    </div>
+  </div>
+
+  <!-- Monthly Finance Planner -->
+  <div class="payment-container">
+    <div class="paymentbox">
+      <div class="calculator-section">
+        <h2>Monthly Finance Planner</h2>
+        <div class="input-group">
+          <label for="monthlyIncome">Enter your monthly income (₹):</label>
+          <input type="number" id="monthlyIncome" placeholder="e.g. 50000">
+        </div>
+        <button id="calculateBtn">Calculate</button>
+        <div class="results" id="results">
+          <div class="result-item">Recommended investment: <span id="investment">₹0</span> (30%)</div>
+          <div class="result-item">Recommended savings: <span id="savings">₹0</span> (20%)</div>
+          <div class="result-item">Available for expenses: <span id="expenses">₹0</span> (50%)</div>
+        </div>
+      </div>
+      <div class="graph-section">
+        <div class="welcome-message" id="welcomeMessage">
+          <h3>Welcome to FinanceR</h3>
+          <p>Enter your monthly income to see a personalized breakdown of how you should allocate your funds between investments, savings, and expenses.</p>
+          <p>We follow the 50-30-20 rule for optimal financial health.</p>
+        </div>
+        <div class="chart-container" id="chartContainer">
+          <canvas id="financeChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- News Section -->
+  <section class="news-section">
+    <h2>Latest News</h2>
+    <div id="news-container">
+      <button class="scroll-button" onclick="scrollNews()">&#10140;</button>
+      <div id="news-card"></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="bottom">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or need further assistance, please drop us a message.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; margin-top: 30px;">
+      <!-- Contact Form on Left -->
+      <form class="contact-form" id="contactForm" style="flex: 1; min-width: 280px; max-width: 400px;">
+        <input type="text" id="nameInput" placeholder="Your Name" required />
+        <input type="email" id="emailInput" placeholder="Your Email" required />
+        <textarea id="messageInput" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <!-- Comments Section on Right -->
+      <div id="commentsSection" style="flex: 1; min-width: 280px; max-width: 400px; background-color: #1e1e1e; padding: 20px; border-radius: 8px; overflow-y: auto; max-height: 400px;">
+        <h3 style="color: #00d4d4; margin-bottom: 15px;">Comments</h3>
+        <div id="commentsList" style="display: flex; flex-direction: column; gap: 15px;"></div>
+      </div>
+    </div>
+  </section>
+
+ 
+</body>
+</html>
